@@ -1,0 +1,34 @@
+name: demo-go-service-strict
+language: go
+target_coverage: 55
+
+requirements:
+  - "ValidateEmail должен возвращать ошибку для пустой строки"
+  - "ValidateEmail должен возвращать ошибку для невалидного email"
+  - "UserLabel должен возвращать ошибку при nil user"
+  - "ReadFirstByte должен возвращать ошибку при отсутствии файла"
+  - "ReadFirstByte должен возвращать первый байт файла"
+
+targets:
+  - "internal/service/user.go:ValidateEmail"
+  - "internal/service/user.go:UserLabel"
+  - "internal/service/user.go:ReadFirstByte"
+
+test_scenarios:
+  - "empty input"
+  - "invalid format"
+  - "large input >10KB"
+  - "nil dependencies"
+
+agent_policy:
+  min_fix_confidence: 0.92
+  min_test_confidence: 0.85
+  enabled_actions:
+    - "apply_fix"
+    - "generate_test"
+  enabled_categories:
+    - "resource_management"
+    - "error_handling"
+    - "nil_safety"
+  manual_review_categories:
+    - "concurrency"

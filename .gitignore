@@ -1,0 +1,23 @@
+# Local credentials and environment settings
+.env
+.env.*
+!.env.example
+*.local.yaml
+*.local.yml
+
+# Compiled binaries and temporary output
+/bin/
+/dist/
+/.cache/
+/ai_agent
+/ai_agent.exe
+*.test
+
+# Generated demo logs, coverage, and reports
+/examples/demo_project/*.log
+/examples/demo_project/coverage.out
+/examples/demo_project/coverage.html
+/examples/demo_project/*_report*.json
+/examples/demo_project/*_report*.md
+/examples/demo_project/llm_last_*.txt
+/examples/demo_project/llm_target_function.txt
